@@ -1,0 +1,26 @@
+{
+  "jhipsterReactApp": {
+    "partnerOrder": {
+      "home": {
+        "title": "Partner Orders",
+        "createLabel": "Create a new Partner Order",
+        "createOrEditLabel": "Create or edit a Partner Order",
+        "notFound": "No Partner Orders found"
+      },
+      "created": "A new Partner Order is created with identifier {{ param }}",
+      "updated": "A Partner Order is updated with identifier {{ param }}",
+      "deleted": "A Partner Order is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Partner Order {{ id }}?"
+      },
+      "detail": {
+        "title": "Partner Order"
+      },
+      "salesOrderId": "Sales Order Id",
+      "orderDate": "Order Date",
+      "serviceNumber": "Service Number",
+      "order": "Order",
+      "partner": "Partner"
+    }
+  }
+}

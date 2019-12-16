@@ -1,0 +1,42 @@
+{
+    "name": "PartnerOrder",
+    "fields": [
+        {
+            "fieldName": "salesOrderId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "orderDate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "serviceNumber",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "partnerAllocatedQuota",
+            "otherEntityRelationshipName": "partnerOrder",
+            "relationshipName": "order"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "partner",
+            "otherEntityRelationshipName": "partnerOrder",
+            "relationshipName": "partner",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191216013230",
+    "entityTableName": "partner_order",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

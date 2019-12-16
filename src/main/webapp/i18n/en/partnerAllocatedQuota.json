@@ -1,0 +1,27 @@
+{
+  "jhipsterReactApp": {
+    "partnerAllocatedQuota": {
+      "home": {
+        "title": "Partner Allocated Quotas",
+        "createLabel": "Create a new Partner Allocated Quota",
+        "createOrEditLabel": "Create or edit a Partner Allocated Quota",
+        "notFound": "No Partner Allocated Quotas found"
+      },
+      "created": "A new Partner Allocated Quota is created with identifier {{ param }}",
+      "updated": "A Partner Allocated Quota is updated with identifier {{ param }}",
+      "deleted": "A Partner Allocated Quota is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Partner Allocated Quota {{ id }}?"
+      },
+      "detail": {
+        "title": "Partner Allocated Quota"
+      },
+      "quantity": "Quantity",
+      "startDate": "Start Date",
+      "expiryDate": "Expiry Date",
+      "status": "Status",
+      "productDetails": "Product Details",
+      "partnerOrder": "Partner Order"
+    }
+  }
+}

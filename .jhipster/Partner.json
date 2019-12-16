@@ -1,0 +1,31 @@
+{
+    "name": "Partner",
+    "fields": [
+        {
+            "fieldName": "partnerName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "partnerCode",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "partnerOrder",
+            "otherEntityRelationshipName": "partner",
+            "relationshipName": "partnerOrder"
+        }
+    ],
+    "changelogDate": "20191216013229",
+    "entityTableName": "partner",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
