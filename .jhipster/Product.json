@@ -2,12 +2,16 @@
     "name": "Product",
     "fields": [
         {
+            "fieldName": "productCode",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "productName",
             "fieldType": "String"
         },
         {
-            "fieldName": "productCode",
-            "fieldType": "Integer"
+            "fieldName": "productRefId",
+            "fieldType": "String"
         }
     ],
     "relationships": [],

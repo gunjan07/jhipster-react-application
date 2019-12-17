@@ -119,6 +119,23 @@ export class PartnerAllocatedQuotaUpdate extends React.Component<IPartnerAllocat
                   <AvField id="partner-allocated-quota-expiryDate" type="date" className="form-control" name="expiryDate" />
                 </AvGroup>
                 <AvGroup>
+                  <Label id="lastUpdateTimestampLabel" for="partner-allocated-quota-lastUpdateTimestamp">
+                    <Translate contentKey="jhipsterReactApp.partnerAllocatedQuota.lastUpdateTimestamp">Last Update Timestamp</Translate>
+                  </Label>
+                  <AvField
+                    id="partner-allocated-quota-lastUpdateTimestamp"
+                    type="date"
+                    className="form-control"
+                    name="lastUpdateTimestamp"
+                  />
+                </AvGroup>
+                <AvGroup>
+                  <Label id="lastUpdateIdLabel" for="partner-allocated-quota-lastUpdateId">
+                    <Translate contentKey="jhipsterReactApp.partnerAllocatedQuota.lastUpdateId">Last Update Id</Translate>
+                  </Label>
+                  <AvField id="partner-allocated-quota-lastUpdateId" type="text" name="lastUpdateId" />
+                </AvGroup>
+                <AvGroup>
                   <Label id="statusLabel" for="partner-allocated-quota-status">
                     <Translate contentKey="jhipsterReactApp.partnerAllocatedQuota.status">Status</Translate>
                   </Label>

@@ -9,9 +9,11 @@ public class ProductDTO implements Serializable {
 
     private Long id;
 
+    private String productCode;
+
     private String productName;
 
-    private Integer productCode;
+    private String productRefId;
 
 
     public Long getId() {
@@ -22,6 +24,14 @@ public class ProductDTO implements Serializable {
         this.id = id;
     }
 
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
+    }
+
     public String getProductName() {
         return productName;
     }
@@ -30,12 +40,12 @@ public class ProductDTO implements Serializable {
         this.productName = productName;
     }
 
-    public Integer getProductCode() {
-        return productCode;
+    public String getProductRefId() {
+        return productRefId;
     }
 
-    public void setProductCode(Integer productCode) {
-        this.productCode = productCode;
+    public void setProductRefId(String productRefId) {
+        this.productRefId = productRefId;
     }
 
     @Override
@@ -63,8 +73,9 @@ public class ProductDTO implements Serializable {
     public String toString() {
         return "ProductDTO{" +
             "id=" + getId() +
+            ", productCode='" + getProductCode() + "'" +
             ", productName='" + getProductName() + "'" +
-            ", productCode=" + getProductCode() +
+            ", productRefId='" + getProductRefId() + "'" +
             "}";
     }
 }

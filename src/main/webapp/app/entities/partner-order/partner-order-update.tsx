@@ -94,22 +94,28 @@ export class PartnerOrderUpdate extends React.Component<IPartnerOrderUpdateProps
                   </AvGroup>
                 ) : null}
                 <AvGroup>
+                  <Label id="submitDateLabel" for="partner-order-submitDate">
+                    <Translate contentKey="jhipsterReactApp.partnerOrder.submitDate">Submit Date</Translate>
+                  </Label>
+                  <AvField id="partner-order-submitDate" type="date" className="form-control" name="submitDate" />
+                </AvGroup>
+                <AvGroup>
+                  <Label id="lastUpdateTimestampLabel" for="partner-order-lastUpdateTimestamp">
+                    <Translate contentKey="jhipsterReactApp.partnerOrder.lastUpdateTimestamp">Last Update Timestamp</Translate>
+                  </Label>
+                  <AvField id="partner-order-lastUpdateTimestamp" type="date" className="form-control" name="lastUpdateTimestamp" />
+                </AvGroup>
+                <AvGroup>
+                  <Label id="lastUpdateIdLabel" for="partner-order-lastUpdateId">
+                    <Translate contentKey="jhipsterReactApp.partnerOrder.lastUpdateId">Last Update Id</Translate>
+                  </Label>
+                  <AvField id="partner-order-lastUpdateId" type="text" name="lastUpdateId" />
+                </AvGroup>
+                <AvGroup>
                   <Label id="salesOrderIdLabel" for="partner-order-salesOrderId">
                     <Translate contentKey="jhipsterReactApp.partnerOrder.salesOrderId">Sales Order Id</Translate>
                   </Label>
                   <AvField id="partner-order-salesOrderId" type="text" name="salesOrderId" />
-                </AvGroup>
-                <AvGroup>
-                  <Label id="orderDateLabel" for="partner-order-orderDate">
-                    <Translate contentKey="jhipsterReactApp.partnerOrder.orderDate">Order Date</Translate>
-                  </Label>
-                  <AvField id="partner-order-orderDate" type="text" name="orderDate" />
-                </AvGroup>
-                <AvGroup>
-                  <Label id="serviceNumberLabel" for="partner-order-serviceNumber">
-                    <Translate contentKey="jhipsterReactApp.partnerOrder.serviceNumber">Service Number</Translate>
-                  </Label>
-                  <AvField id="partner-order-serviceNumber" type="text" name="serviceNumber" />
                 </AvGroup>
                 <AvGroup>
                   <Label for="partner-order-partner">

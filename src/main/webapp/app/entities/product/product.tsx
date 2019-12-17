@@ -38,10 +38,13 @@ export class Product extends React.Component<IProductProps> {
                     <Translate contentKey="global.field.id">ID</Translate>
                   </th>
                   <th>
+                    <Translate contentKey="jhipsterReactApp.product.productCode">Product Code</Translate>
+                  </th>
+                  <th>
                     <Translate contentKey="jhipsterReactApp.product.productName">Product Name</Translate>
                   </th>
                   <th>
-                    <Translate contentKey="jhipsterReactApp.product.productCode">Product Code</Translate>
+                    <Translate contentKey="jhipsterReactApp.product.productRefId">Product Ref Id</Translate>
                   </th>
                   <th />
                 </tr>
@@ -54,8 +57,9 @@ export class Product extends React.Component<IProductProps> {
                         {product.id}
                       </Button>
                     </td>
-                    <td>{product.productName}</td>
                     <td>{product.productCode}</td>
+                    <td>{product.productName}</td>
+                    <td>{product.productRefId}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">
                         <Button tag={Link} to={`${match.url}/${product.id}`} color="info" size="sm">

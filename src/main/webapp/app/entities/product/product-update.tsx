@@ -88,16 +88,22 @@ export class ProductUpdate extends React.Component<IProductUpdateProps, IProduct
                   </AvGroup>
                 ) : null}
                 <AvGroup>
+                  <Label id="productCodeLabel" for="product-productCode">
+                    <Translate contentKey="jhipsterReactApp.product.productCode">Product Code</Translate>
+                  </Label>
+                  <AvField id="product-productCode" type="text" name="productCode" />
+                </AvGroup>
+                <AvGroup>
                   <Label id="productNameLabel" for="product-productName">
                     <Translate contentKey="jhipsterReactApp.product.productName">Product Name</Translate>
                   </Label>
                   <AvField id="product-productName" type="text" name="productName" />
                 </AvGroup>
                 <AvGroup>
-                  <Label id="productCodeLabel" for="product-productCode">
-                    <Translate contentKey="jhipsterReactApp.product.productCode">Product Code</Translate>
+                  <Label id="productRefIdLabel" for="product-productRefId">
+                    <Translate contentKey="jhipsterReactApp.product.productRefId">Product Ref Id</Translate>
                   </Label>
-                  <AvField id="product-productCode" type="string" className="form-control" name="productCode" />
+                  <AvField id="product-productRefId" type="text" name="productRefId" />
                 </AvGroup>
                 <Button tag={Link} id="cancel-save" to="/product" replace color="info">
                   <FontAwesomeIcon icon="arrow-left" />

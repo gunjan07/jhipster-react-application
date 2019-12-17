@@ -36,11 +36,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = JhipsterReactApp.class)
 public class ProductResourceIT {
 
+    private static final String DEFAULT_PRODUCT_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_PRODUCT_CODE = "BBBBBBBBBB";
+
     private static final String DEFAULT_PRODUCT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_PRODUCT_NAME = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_PRODUCT_CODE = 1;
-    private static final Integer UPDATED_PRODUCT_CODE = 2;
+    private static final String DEFAULT_PRODUCT_REF_ID = "AAAAAAAAAA";
+    private static final String UPDATED_PRODUCT_REF_ID = "BBBBBBBBBB";
 
     @Autowired
     private ProductRepository productRepository;
@@ -90,8 +93,9 @@ public class ProductResourceIT {
      */
     public static Product createEntity(EntityManager em) {
         Product product = new Product()
+            .productCode(DEFAULT_PRODUCT_CODE)
             .productName(DEFAULT_PRODUCT_NAME)
-            .productCode(DEFAULT_PRODUCT_CODE);
+            .productRefId(DEFAULT_PRODUCT_REF_ID);
         return product;
     }
     /**
@@ -102,8 +106,9 @@ public class ProductResourceIT {
      */
     public static Product createUpdatedEntity(EntityManager em) {
         Product product = new Product()
+            .productCode(UPDATED_PRODUCT_CODE)
             .productName(UPDATED_PRODUCT_NAME)
-            .productCode(UPDATED_PRODUCT_CODE);
+            .productRefId(UPDATED_PRODUCT_REF_ID);
         return product;
     }
 
@@ -128,8 +133,9 @@ public class ProductResourceIT {
         List<Product> productList = productRepository.findAll();
         assertThat(productList).hasSize(databaseSizeBeforeCreate + 1);
         Product testProduct = productList.get(productList.size() - 1);
-        assertThat(testProduct.getProductName()).isEqualTo(DEFAULT_PRODUCT_NAME);
         assertThat(testProduct.getProductCode()).isEqualTo(DEFAULT_PRODUCT_CODE);
+        assertThat(testProduct.getProductName()).isEqualTo(DEFAULT_PRODUCT_NAME);
+        assertThat(testProduct.getProductRefId()).isEqualTo(DEFAULT_PRODUCT_REF_ID);
     }
 
     @Test
@@ -164,8 +170,9 @@ public class ProductResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(product.getId().intValue())))
+            .andExpect(jsonPath("$.[*].productCode").value(hasItem(DEFAULT_PRODUCT_CODE)))
             .andExpect(jsonPath("$.[*].productName").value(hasItem(DEFAULT_PRODUCT_NAME)))
-            .andExpect(jsonPath("$.[*].productCode").value(hasItem(DEFAULT_PRODUCT_CODE)));
+            .andExpect(jsonPath("$.[*].productRefId").value(hasItem(DEFAULT_PRODUCT_REF_ID)));
     }
     
     @Test
@@ -179,8 +186,9 @@ public class ProductResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(product.getId().intValue()))
+            .andExpect(jsonPath("$.productCode").value(DEFAULT_PRODUCT_CODE))
             .andExpect(jsonPath("$.productName").value(DEFAULT_PRODUCT_NAME))
-            .andExpect(jsonPath("$.productCode").value(DEFAULT_PRODUCT_CODE));
+            .andExpect(jsonPath("$.productRefId").value(DEFAULT_PRODUCT_REF_ID));
     }
 
     @Test
@@ -204,8 +212,9 @@ public class ProductResourceIT {
         // Disconnect from session so that the updates on updatedProduct are not directly saved in db
         em.detach(updatedProduct);
         updatedProduct
+            .productCode(UPDATED_PRODUCT_CODE)
             .productName(UPDATED_PRODUCT_NAME)
-            .productCode(UPDATED_PRODUCT_CODE);
+            .productRefId(UPDATED_PRODUCT_REF_ID);
         ProductDTO productDTO = productMapper.toDto(updatedProduct);
 
         restProductMockMvc.perform(put("/api/products")
@@ -217,8 +226,9 @@ public class ProductResourceIT {
         List<Product> productList = productRepository.findAll();
         assertThat(productList).hasSize(databaseSizeBeforeUpdate);
         Product testProduct = productList.get(productList.size() - 1);
-        assertThat(testProduct.getProductName()).isEqualTo(UPDATED_PRODUCT_NAME);
         assertThat(testProduct.getProductCode()).isEqualTo(UPDATED_PRODUCT_CODE);
+        assertThat(testProduct.getProductName()).isEqualTo(UPDATED_PRODUCT_NAME);
+        assertThat(testProduct.getProductRefId()).isEqualTo(UPDATED_PRODUCT_REF_ID);
     }
 
     @Test

@@ -1,4 +1,5 @@
 package com.mycompany.myapp.service.dto;
+import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -9,11 +10,13 @@ public class PartnerOrderDTO implements Serializable {
 
     private Long id;
 
+    private LocalDate submitDate;
+
+    private LocalDate lastUpdateTimestamp;
+
+    private String lastUpdateId;
+
     private String salesOrderId;
-
-    private String orderDate;
-
-    private String serviceNumber;
 
 
     private Long partnerId;
@@ -26,28 +29,36 @@ public class PartnerOrderDTO implements Serializable {
         this.id = id;
     }
 
+    public LocalDate getSubmitDate() {
+        return submitDate;
+    }
+
+    public void setSubmitDate(LocalDate submitDate) {
+        this.submitDate = submitDate;
+    }
+
+    public LocalDate getLastUpdateTimestamp() {
+        return lastUpdateTimestamp;
+    }
+
+    public void setLastUpdateTimestamp(LocalDate lastUpdateTimestamp) {
+        this.lastUpdateTimestamp = lastUpdateTimestamp;
+    }
+
+    public String getLastUpdateId() {
+        return lastUpdateId;
+    }
+
+    public void setLastUpdateId(String lastUpdateId) {
+        this.lastUpdateId = lastUpdateId;
+    }
+
     public String getSalesOrderId() {
         return salesOrderId;
     }
 
     public void setSalesOrderId(String salesOrderId) {
         this.salesOrderId = salesOrderId;
-    }
-
-    public String getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(String orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public String getServiceNumber() {
-        return serviceNumber;
-    }
-
-    public void setServiceNumber(String serviceNumber) {
-        this.serviceNumber = serviceNumber;
     }
 
     public Long getPartnerId() {
@@ -83,9 +94,10 @@ public class PartnerOrderDTO implements Serializable {
     public String toString() {
         return "PartnerOrderDTO{" +
             "id=" + getId() +
+            ", submitDate='" + getSubmitDate() + "'" +
+            ", lastUpdateTimestamp='" + getLastUpdateTimestamp() + "'" +
+            ", lastUpdateId='" + getLastUpdateId() + "'" +
             ", salesOrderId='" + getSalesOrderId() + "'" +
-            ", orderDate='" + getOrderDate() + "'" +
-            ", serviceNumber='" + getServiceNumber() + "'" +
             ", partner=" + getPartnerId() +
             "}";
     }

@@ -19,6 +19,8 @@
       "quantity": "Quantity",
       "startDate": "Start Date",
       "expiryDate": "Expiry Date",
+      "lastUpdateTimestamp": "Last Update Timestamp",
+      "lastUpdateId": "Last Update Id",
       "status": "Status",
       "productDetails": "Product Details",
       "partnerOrder": "Partner Order"

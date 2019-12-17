@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-import { Translate, ICrudGetAllAction } from 'react-jhipster';
+import { Translate, ICrudGetAllAction, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -38,13 +38,16 @@ export class PartnerOrder extends React.Component<IPartnerOrderProps> {
                     <Translate contentKey="global.field.id">ID</Translate>
                   </th>
                   <th>
+                    <Translate contentKey="jhipsterReactApp.partnerOrder.submitDate">Submit Date</Translate>
+                  </th>
+                  <th>
+                    <Translate contentKey="jhipsterReactApp.partnerOrder.lastUpdateTimestamp">Last Update Timestamp</Translate>
+                  </th>
+                  <th>
+                    <Translate contentKey="jhipsterReactApp.partnerOrder.lastUpdateId">Last Update Id</Translate>
+                  </th>
+                  <th>
                     <Translate contentKey="jhipsterReactApp.partnerOrder.salesOrderId">Sales Order Id</Translate>
-                  </th>
-                  <th>
-                    <Translate contentKey="jhipsterReactApp.partnerOrder.orderDate">Order Date</Translate>
-                  </th>
-                  <th>
-                    <Translate contentKey="jhipsterReactApp.partnerOrder.serviceNumber">Service Number</Translate>
                   </th>
                   <th>
                     <Translate contentKey="jhipsterReactApp.partnerOrder.partner">Partner</Translate>
@@ -60,9 +63,14 @@ export class PartnerOrder extends React.Component<IPartnerOrderProps> {
                         {partnerOrder.id}
                       </Button>
                     </td>
+                    <td>
+                      <TextFormat type="date" value={partnerOrder.submitDate} format={APP_LOCAL_DATE_FORMAT} />
+                    </td>
+                    <td>
+                      <TextFormat type="date" value={partnerOrder.lastUpdateTimestamp} format={APP_LOCAL_DATE_FORMAT} />
+                    </td>
+                    <td>{partnerOrder.lastUpdateId}</td>
                     <td>{partnerOrder.salesOrderId}</td>
-                    <td>{partnerOrder.orderDate}</td>
-                    <td>{partnerOrder.serviceNumber}</td>
                     <td>{partnerOrder.partnerId ? <Link to={`partner/${partnerOrder.partnerId}`}>{partnerOrder.partnerId}</Link> : ''}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">
