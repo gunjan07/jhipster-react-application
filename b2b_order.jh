@@ -1,6 +1,7 @@
 entity Product {
-	productName String,
-    productCode Integer
+	productCode String,
+    productName String,
+    productRefId String
 }
 
 entity Partner {
@@ -9,15 +10,18 @@ entity Partner {
 }
 
 entity PartnerOrder {
+	submitDate LocalDate,
+    lastUpdateTimestamp LocalDate,
+    lastUpdateId String,
 	salesOrderId String,
-	orderDate String,
-    serviceNumber String
 }
 
 entity PartnerAllocatedQuota {
 	quantity Integer,
     startDate LocalDate,
     expiryDate LocalDate,
+    lastUpdateTimestamp LocalDate,
+    lastUpdateId String,
     status String
 }
 
