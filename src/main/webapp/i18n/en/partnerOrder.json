@@ -16,9 +16,10 @@
       "detail": {
         "title": "Partner Order"
       },
+      "submitDate": "Submit Date",
+      "lastUpdateTimestamp": "Last Update Timestamp",
+      "lastUpdateId": "Last Update Id",
       "salesOrderId": "Sales Order Id",
-      "orderDate": "Order Date",
-      "serviceNumber": "Service Number",
       "order": "Order",
       "partner": "Partner"
     }

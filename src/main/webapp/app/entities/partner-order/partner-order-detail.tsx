@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col } from 'reactstrap';
-import { Translate, ICrudGetAction } from 'react-jhipster';
+import { Translate, ICrudGetAction, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -27,23 +27,33 @@ export class PartnerOrderDetail extends React.Component<IPartnerOrderDetailProps
           </h2>
           <dl className="jh-entity-details">
             <dt>
+              <span id="submitDate">
+                <Translate contentKey="jhipsterReactApp.partnerOrder.submitDate">Submit Date</Translate>
+              </span>
+            </dt>
+            <dd>
+              <TextFormat value={partnerOrderEntity.submitDate} type="date" format={APP_LOCAL_DATE_FORMAT} />
+            </dd>
+            <dt>
+              <span id="lastUpdateTimestamp">
+                <Translate contentKey="jhipsterReactApp.partnerOrder.lastUpdateTimestamp">Last Update Timestamp</Translate>
+              </span>
+            </dt>
+            <dd>
+              <TextFormat value={partnerOrderEntity.lastUpdateTimestamp} type="date" format={APP_LOCAL_DATE_FORMAT} />
+            </dd>
+            <dt>
+              <span id="lastUpdateId">
+                <Translate contentKey="jhipsterReactApp.partnerOrder.lastUpdateId">Last Update Id</Translate>
+              </span>
+            </dt>
+            <dd>{partnerOrderEntity.lastUpdateId}</dd>
+            <dt>
               <span id="salesOrderId">
                 <Translate contentKey="jhipsterReactApp.partnerOrder.salesOrderId">Sales Order Id</Translate>
               </span>
             </dt>
             <dd>{partnerOrderEntity.salesOrderId}</dd>
-            <dt>
-              <span id="orderDate">
-                <Translate contentKey="jhipsterReactApp.partnerOrder.orderDate">Order Date</Translate>
-              </span>
-            </dt>
-            <dd>{partnerOrderEntity.orderDate}</dd>
-            <dt>
-              <span id="serviceNumber">
-                <Translate contentKey="jhipsterReactApp.partnerOrder.serviceNumber">Service Number</Translate>
-              </span>
-            </dt>
-            <dd>{partnerOrderEntity.serviceNumber}</dd>
             <dt>
               <Translate contentKey="jhipsterReactApp.partnerOrder.partner">Partner</Translate>
             </dt>

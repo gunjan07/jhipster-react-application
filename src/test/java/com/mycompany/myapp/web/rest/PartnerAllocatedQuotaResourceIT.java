@@ -47,6 +47,12 @@ public class PartnerAllocatedQuotaResourceIT {
     private static final LocalDate DEFAULT_EXPIRY_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_EXPIRY_DATE = LocalDate.now(ZoneId.systemDefault());
 
+    private static final LocalDate DEFAULT_LAST_UPDATE_TIMESTAMP = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_LAST_UPDATE_TIMESTAMP = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_LAST_UPDATE_ID = "AAAAAAAAAA";
+    private static final String UPDATED_LAST_UPDATE_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_STATUS = "AAAAAAAAAA";
     private static final String UPDATED_STATUS = "BBBBBBBBBB";
 
@@ -101,6 +107,8 @@ public class PartnerAllocatedQuotaResourceIT {
             .quantity(DEFAULT_QUANTITY)
             .startDate(DEFAULT_START_DATE)
             .expiryDate(DEFAULT_EXPIRY_DATE)
+            .lastUpdateTimestamp(DEFAULT_LAST_UPDATE_TIMESTAMP)
+            .lastUpdateId(DEFAULT_LAST_UPDATE_ID)
             .status(DEFAULT_STATUS);
         return partnerAllocatedQuota;
     }
@@ -115,6 +123,8 @@ public class PartnerAllocatedQuotaResourceIT {
             .quantity(UPDATED_QUANTITY)
             .startDate(UPDATED_START_DATE)
             .expiryDate(UPDATED_EXPIRY_DATE)
+            .lastUpdateTimestamp(UPDATED_LAST_UPDATE_TIMESTAMP)
+            .lastUpdateId(UPDATED_LAST_UPDATE_ID)
             .status(UPDATED_STATUS);
         return partnerAllocatedQuota;
     }
@@ -143,6 +153,8 @@ public class PartnerAllocatedQuotaResourceIT {
         assertThat(testPartnerAllocatedQuota.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
         assertThat(testPartnerAllocatedQuota.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testPartnerAllocatedQuota.getExpiryDate()).isEqualTo(DEFAULT_EXPIRY_DATE);
+        assertThat(testPartnerAllocatedQuota.getLastUpdateTimestamp()).isEqualTo(DEFAULT_LAST_UPDATE_TIMESTAMP);
+        assertThat(testPartnerAllocatedQuota.getLastUpdateId()).isEqualTo(DEFAULT_LAST_UPDATE_ID);
         assertThat(testPartnerAllocatedQuota.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
@@ -181,6 +193,8 @@ public class PartnerAllocatedQuotaResourceIT {
             .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].expiryDate").value(hasItem(DEFAULT_EXPIRY_DATE.toString())))
+            .andExpect(jsonPath("$.[*].lastUpdateTimestamp").value(hasItem(DEFAULT_LAST_UPDATE_TIMESTAMP.toString())))
+            .andExpect(jsonPath("$.[*].lastUpdateId").value(hasItem(DEFAULT_LAST_UPDATE_ID)))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)));
     }
     
@@ -198,6 +212,8 @@ public class PartnerAllocatedQuotaResourceIT {
             .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE.toString()))
             .andExpect(jsonPath("$.expiryDate").value(DEFAULT_EXPIRY_DATE.toString()))
+            .andExpect(jsonPath("$.lastUpdateTimestamp").value(DEFAULT_LAST_UPDATE_TIMESTAMP.toString()))
+            .andExpect(jsonPath("$.lastUpdateId").value(DEFAULT_LAST_UPDATE_ID))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS));
     }
 
@@ -225,6 +241,8 @@ public class PartnerAllocatedQuotaResourceIT {
             .quantity(UPDATED_QUANTITY)
             .startDate(UPDATED_START_DATE)
             .expiryDate(UPDATED_EXPIRY_DATE)
+            .lastUpdateTimestamp(UPDATED_LAST_UPDATE_TIMESTAMP)
+            .lastUpdateId(UPDATED_LAST_UPDATE_ID)
             .status(UPDATED_STATUS);
         PartnerAllocatedQuotaDTO partnerAllocatedQuotaDTO = partnerAllocatedQuotaMapper.toDto(updatedPartnerAllocatedQuota);
 
@@ -240,6 +258,8 @@ public class PartnerAllocatedQuotaResourceIT {
         assertThat(testPartnerAllocatedQuota.getQuantity()).isEqualTo(UPDATED_QUANTITY);
         assertThat(testPartnerAllocatedQuota.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testPartnerAllocatedQuota.getExpiryDate()).isEqualTo(UPDATED_EXPIRY_DATE);
+        assertThat(testPartnerAllocatedQuota.getLastUpdateTimestamp()).isEqualTo(UPDATED_LAST_UPDATE_TIMESTAMP);
+        assertThat(testPartnerAllocatedQuota.getLastUpdateId()).isEqualTo(UPDATED_LAST_UPDATE_ID);
         assertThat(testPartnerAllocatedQuota.getStatus()).isEqualTo(UPDATED_STATUS);
     }
 

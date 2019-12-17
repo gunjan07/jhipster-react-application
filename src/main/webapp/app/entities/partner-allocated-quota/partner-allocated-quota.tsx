@@ -47,6 +47,12 @@ export class PartnerAllocatedQuota extends React.Component<IPartnerAllocatedQuot
                     <Translate contentKey="jhipsterReactApp.partnerAllocatedQuota.expiryDate">Expiry Date</Translate>
                   </th>
                   <th>
+                    <Translate contentKey="jhipsterReactApp.partnerAllocatedQuota.lastUpdateTimestamp">Last Update Timestamp</Translate>
+                  </th>
+                  <th>
+                    <Translate contentKey="jhipsterReactApp.partnerAllocatedQuota.lastUpdateId">Last Update Id</Translate>
+                  </th>
+                  <th>
                     <Translate contentKey="jhipsterReactApp.partnerAllocatedQuota.status">Status</Translate>
                   </th>
                   <th>
@@ -73,6 +79,10 @@ export class PartnerAllocatedQuota extends React.Component<IPartnerAllocatedQuot
                     <td>
                       <TextFormat type="date" value={partnerAllocatedQuota.expiryDate} format={APP_LOCAL_DATE_FORMAT} />
                     </td>
+                    <td>
+                      <TextFormat type="date" value={partnerAllocatedQuota.lastUpdateTimestamp} format={APP_LOCAL_DATE_FORMAT} />
+                    </td>
+                    <td>{partnerAllocatedQuota.lastUpdateId}</td>
                     <td>{partnerAllocatedQuota.status}</td>
                     <td>
                       {partnerAllocatedQuota.productDetailsId ? (

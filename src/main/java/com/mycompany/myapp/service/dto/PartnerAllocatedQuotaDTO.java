@@ -16,6 +16,10 @@ public class PartnerAllocatedQuotaDTO implements Serializable {
 
     private LocalDate expiryDate;
 
+    private LocalDate lastUpdateTimestamp;
+
+    private String lastUpdateId;
+
     private String status;
 
 
@@ -53,6 +57,22 @@ public class PartnerAllocatedQuotaDTO implements Serializable {
 
     public void setExpiryDate(LocalDate expiryDate) {
         this.expiryDate = expiryDate;
+    }
+
+    public LocalDate getLastUpdateTimestamp() {
+        return lastUpdateTimestamp;
+    }
+
+    public void setLastUpdateTimestamp(LocalDate lastUpdateTimestamp) {
+        this.lastUpdateTimestamp = lastUpdateTimestamp;
+    }
+
+    public String getLastUpdateId() {
+        return lastUpdateId;
+    }
+
+    public void setLastUpdateId(String lastUpdateId) {
+        this.lastUpdateId = lastUpdateId;
     }
 
     public String getStatus() {
@@ -107,6 +127,8 @@ public class PartnerAllocatedQuotaDTO implements Serializable {
             ", quantity=" + getQuantity() +
             ", startDate='" + getStartDate() + "'" +
             ", expiryDate='" + getExpiryDate() + "'" +
+            ", lastUpdateTimestamp='" + getLastUpdateTimestamp() + "'" +
+            ", lastUpdateId='" + getLastUpdateId() + "'" +
             ", status='" + getStatus() + "'" +
             ", productDetails=" + getProductDetailsId() +
             ", partnerOrder=" + getPartnerOrderId() +

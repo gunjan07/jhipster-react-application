@@ -6,6 +6,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,14 +24,17 @@ public class PartnerOrder implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "submit_date")
+    private LocalDate submitDate;
+
+    @Column(name = "last_update_timestamp")
+    private LocalDate lastUpdateTimestamp;
+
+    @Column(name = "last_update_id")
+    private String lastUpdateId;
+
     @Column(name = "sales_order_id")
     private String salesOrderId;
-
-    @Column(name = "order_date")
-    private String orderDate;
-
-    @Column(name = "service_number")
-    private String serviceNumber;
 
     @OneToMany(mappedBy = "partnerOrder")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -49,6 +53,45 @@ public class PartnerOrder implements Serializable {
         this.id = id;
     }
 
+    public LocalDate getSubmitDate() {
+        return submitDate;
+    }
+
+    public PartnerOrder submitDate(LocalDate submitDate) {
+        this.submitDate = submitDate;
+        return this;
+    }
+
+    public void setSubmitDate(LocalDate submitDate) {
+        this.submitDate = submitDate;
+    }
+
+    public LocalDate getLastUpdateTimestamp() {
+        return lastUpdateTimestamp;
+    }
+
+    public PartnerOrder lastUpdateTimestamp(LocalDate lastUpdateTimestamp) {
+        this.lastUpdateTimestamp = lastUpdateTimestamp;
+        return this;
+    }
+
+    public void setLastUpdateTimestamp(LocalDate lastUpdateTimestamp) {
+        this.lastUpdateTimestamp = lastUpdateTimestamp;
+    }
+
+    public String getLastUpdateId() {
+        return lastUpdateId;
+    }
+
+    public PartnerOrder lastUpdateId(String lastUpdateId) {
+        this.lastUpdateId = lastUpdateId;
+        return this;
+    }
+
+    public void setLastUpdateId(String lastUpdateId) {
+        this.lastUpdateId = lastUpdateId;
+    }
+
     public String getSalesOrderId() {
         return salesOrderId;
     }
@@ -60,32 +103,6 @@ public class PartnerOrder implements Serializable {
 
     public void setSalesOrderId(String salesOrderId) {
         this.salesOrderId = salesOrderId;
-    }
-
-    public String getOrderDate() {
-        return orderDate;
-    }
-
-    public PartnerOrder orderDate(String orderDate) {
-        this.orderDate = orderDate;
-        return this;
-    }
-
-    public void setOrderDate(String orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public String getServiceNumber() {
-        return serviceNumber;
-    }
-
-    public PartnerOrder serviceNumber(String serviceNumber) {
-        this.serviceNumber = serviceNumber;
-        return this;
-    }
-
-    public void setServiceNumber(String serviceNumber) {
-        this.serviceNumber = serviceNumber;
     }
 
     public Set<PartnerAllocatedQuota> getOrders() {
@@ -147,9 +164,10 @@ public class PartnerOrder implements Serializable {
     public String toString() {
         return "PartnerOrder{" +
             "id=" + getId() +
+            ", submitDate='" + getSubmitDate() + "'" +
+            ", lastUpdateTimestamp='" + getLastUpdateTimestamp() + "'" +
+            ", lastUpdateId='" + getLastUpdateId() + "'" +
             ", salesOrderId='" + getSalesOrderId() + "'" +
-            ", orderDate='" + getOrderDate() + "'" +
-            ", serviceNumber='" + getServiceNumber() + "'" +
             "}";
     }
 }

@@ -2,15 +2,19 @@
     "name": "PartnerOrder",
     "fields": [
         {
+            "fieldName": "submitDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "lastUpdateTimestamp",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "lastUpdateId",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "salesOrderId",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "orderDate",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "serviceNumber",
             "fieldType": "String"
         }
     ],

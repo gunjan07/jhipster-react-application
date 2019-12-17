@@ -1,7 +1,8 @@
 export interface IProduct {
   id?: number;
+  productCode?: string;
   productName?: string;
-  productCode?: number;
+  productRefId?: string;
 }
 
 export const defaultValue: Readonly<IProduct> = {};

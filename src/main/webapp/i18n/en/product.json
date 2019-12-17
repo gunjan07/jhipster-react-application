@@ -16,8 +16,9 @@
       "detail": {
         "title": "Product"
       },
+      "productCode": "Product Code",
       "productName": "Product Name",
-      "productCode": "Product Code"
+      "productRefId": "Product Ref Id"
     }
   }
 }

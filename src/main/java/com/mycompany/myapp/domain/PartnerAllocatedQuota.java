@@ -31,6 +31,12 @@ public class PartnerAllocatedQuota implements Serializable {
     @Column(name = "expiry_date")
     private LocalDate expiryDate;
 
+    @Column(name = "last_update_timestamp")
+    private LocalDate lastUpdateTimestamp;
+
+    @Column(name = "last_update_id")
+    private String lastUpdateId;
+
     @Column(name = "status")
     private String status;
 
@@ -88,6 +94,32 @@ public class PartnerAllocatedQuota implements Serializable {
 
     public void setExpiryDate(LocalDate expiryDate) {
         this.expiryDate = expiryDate;
+    }
+
+    public LocalDate getLastUpdateTimestamp() {
+        return lastUpdateTimestamp;
+    }
+
+    public PartnerAllocatedQuota lastUpdateTimestamp(LocalDate lastUpdateTimestamp) {
+        this.lastUpdateTimestamp = lastUpdateTimestamp;
+        return this;
+    }
+
+    public void setLastUpdateTimestamp(LocalDate lastUpdateTimestamp) {
+        this.lastUpdateTimestamp = lastUpdateTimestamp;
+    }
+
+    public String getLastUpdateId() {
+        return lastUpdateId;
+    }
+
+    public PartnerAllocatedQuota lastUpdateId(String lastUpdateId) {
+        this.lastUpdateId = lastUpdateId;
+        return this;
+    }
+
+    public void setLastUpdateId(String lastUpdateId) {
+        this.lastUpdateId = lastUpdateId;
     }
 
     public String getStatus() {
@@ -153,6 +185,8 @@ public class PartnerAllocatedQuota implements Serializable {
             ", quantity=" + getQuantity() +
             ", startDate='" + getStartDate() + "'" +
             ", expiryDate='" + getExpiryDate() + "'" +
+            ", lastUpdateTimestamp='" + getLastUpdateTimestamp() + "'" +
+            ", lastUpdateId='" + getLastUpdateId() + "'" +
             ", status='" + getStatus() + "'" +
             "}";
     }

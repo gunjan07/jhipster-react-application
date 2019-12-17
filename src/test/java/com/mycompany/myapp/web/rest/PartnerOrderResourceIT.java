@@ -22,6 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static com.mycompany.myapp.web.rest.TestUtil.createFormattingConversionService;
@@ -36,14 +38,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = JhipsterReactApp.class)
 public class PartnerOrderResourceIT {
 
+    private static final LocalDate DEFAULT_SUBMIT_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_SUBMIT_DATE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_LAST_UPDATE_TIMESTAMP = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_LAST_UPDATE_TIMESTAMP = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_LAST_UPDATE_ID = "AAAAAAAAAA";
+    private static final String UPDATED_LAST_UPDATE_ID = "BBBBBBBBBB";
+
     private static final String DEFAULT_SALES_ORDER_ID = "AAAAAAAAAA";
     private static final String UPDATED_SALES_ORDER_ID = "BBBBBBBBBB";
-
-    private static final String DEFAULT_ORDER_DATE = "AAAAAAAAAA";
-    private static final String UPDATED_ORDER_DATE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_SERVICE_NUMBER = "AAAAAAAAAA";
-    private static final String UPDATED_SERVICE_NUMBER = "BBBBBBBBBB";
 
     @Autowired
     private PartnerOrderRepository partnerOrderRepository;
@@ -93,9 +98,10 @@ public class PartnerOrderResourceIT {
      */
     public static PartnerOrder createEntity(EntityManager em) {
         PartnerOrder partnerOrder = new PartnerOrder()
-            .salesOrderId(DEFAULT_SALES_ORDER_ID)
-            .orderDate(DEFAULT_ORDER_DATE)
-            .serviceNumber(DEFAULT_SERVICE_NUMBER);
+            .submitDate(DEFAULT_SUBMIT_DATE)
+            .lastUpdateTimestamp(DEFAULT_LAST_UPDATE_TIMESTAMP)
+            .lastUpdateId(DEFAULT_LAST_UPDATE_ID)
+            .salesOrderId(DEFAULT_SALES_ORDER_ID);
         return partnerOrder;
     }
     /**
@@ -106,9 +112,10 @@ public class PartnerOrderResourceIT {
      */
     public static PartnerOrder createUpdatedEntity(EntityManager em) {
         PartnerOrder partnerOrder = new PartnerOrder()
-            .salesOrderId(UPDATED_SALES_ORDER_ID)
-            .orderDate(UPDATED_ORDER_DATE)
-            .serviceNumber(UPDATED_SERVICE_NUMBER);
+            .submitDate(UPDATED_SUBMIT_DATE)
+            .lastUpdateTimestamp(UPDATED_LAST_UPDATE_TIMESTAMP)
+            .lastUpdateId(UPDATED_LAST_UPDATE_ID)
+            .salesOrderId(UPDATED_SALES_ORDER_ID);
         return partnerOrder;
     }
 
@@ -133,9 +140,10 @@ public class PartnerOrderResourceIT {
         List<PartnerOrder> partnerOrderList = partnerOrderRepository.findAll();
         assertThat(partnerOrderList).hasSize(databaseSizeBeforeCreate + 1);
         PartnerOrder testPartnerOrder = partnerOrderList.get(partnerOrderList.size() - 1);
+        assertThat(testPartnerOrder.getSubmitDate()).isEqualTo(DEFAULT_SUBMIT_DATE);
+        assertThat(testPartnerOrder.getLastUpdateTimestamp()).isEqualTo(DEFAULT_LAST_UPDATE_TIMESTAMP);
+        assertThat(testPartnerOrder.getLastUpdateId()).isEqualTo(DEFAULT_LAST_UPDATE_ID);
         assertThat(testPartnerOrder.getSalesOrderId()).isEqualTo(DEFAULT_SALES_ORDER_ID);
-        assertThat(testPartnerOrder.getOrderDate()).isEqualTo(DEFAULT_ORDER_DATE);
-        assertThat(testPartnerOrder.getServiceNumber()).isEqualTo(DEFAULT_SERVICE_NUMBER);
     }
 
     @Test
@@ -170,9 +178,10 @@ public class PartnerOrderResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(partnerOrder.getId().intValue())))
-            .andExpect(jsonPath("$.[*].salesOrderId").value(hasItem(DEFAULT_SALES_ORDER_ID)))
-            .andExpect(jsonPath("$.[*].orderDate").value(hasItem(DEFAULT_ORDER_DATE)))
-            .andExpect(jsonPath("$.[*].serviceNumber").value(hasItem(DEFAULT_SERVICE_NUMBER)));
+            .andExpect(jsonPath("$.[*].submitDate").value(hasItem(DEFAULT_SUBMIT_DATE.toString())))
+            .andExpect(jsonPath("$.[*].lastUpdateTimestamp").value(hasItem(DEFAULT_LAST_UPDATE_TIMESTAMP.toString())))
+            .andExpect(jsonPath("$.[*].lastUpdateId").value(hasItem(DEFAULT_LAST_UPDATE_ID)))
+            .andExpect(jsonPath("$.[*].salesOrderId").value(hasItem(DEFAULT_SALES_ORDER_ID)));
     }
     
     @Test
@@ -186,9 +195,10 @@ public class PartnerOrderResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(partnerOrder.getId().intValue()))
-            .andExpect(jsonPath("$.salesOrderId").value(DEFAULT_SALES_ORDER_ID))
-            .andExpect(jsonPath("$.orderDate").value(DEFAULT_ORDER_DATE))
-            .andExpect(jsonPath("$.serviceNumber").value(DEFAULT_SERVICE_NUMBER));
+            .andExpect(jsonPath("$.submitDate").value(DEFAULT_SUBMIT_DATE.toString()))
+            .andExpect(jsonPath("$.lastUpdateTimestamp").value(DEFAULT_LAST_UPDATE_TIMESTAMP.toString()))
+            .andExpect(jsonPath("$.lastUpdateId").value(DEFAULT_LAST_UPDATE_ID))
+            .andExpect(jsonPath("$.salesOrderId").value(DEFAULT_SALES_ORDER_ID));
     }
 
     @Test
@@ -212,9 +222,10 @@ public class PartnerOrderResourceIT {
         // Disconnect from session so that the updates on updatedPartnerOrder are not directly saved in db
         em.detach(updatedPartnerOrder);
         updatedPartnerOrder
-            .salesOrderId(UPDATED_SALES_ORDER_ID)
-            .orderDate(UPDATED_ORDER_DATE)
-            .serviceNumber(UPDATED_SERVICE_NUMBER);
+            .submitDate(UPDATED_SUBMIT_DATE)
+            .lastUpdateTimestamp(UPDATED_LAST_UPDATE_TIMESTAMP)
+            .lastUpdateId(UPDATED_LAST_UPDATE_ID)
+            .salesOrderId(UPDATED_SALES_ORDER_ID);
         PartnerOrderDTO partnerOrderDTO = partnerOrderMapper.toDto(updatedPartnerOrder);
 
         restPartnerOrderMockMvc.perform(put("/api/partner-orders")
@@ -226,9 +237,10 @@ public class PartnerOrderResourceIT {
         List<PartnerOrder> partnerOrderList = partnerOrderRepository.findAll();
         assertThat(partnerOrderList).hasSize(databaseSizeBeforeUpdate);
         PartnerOrder testPartnerOrder = partnerOrderList.get(partnerOrderList.size() - 1);
+        assertThat(testPartnerOrder.getSubmitDate()).isEqualTo(UPDATED_SUBMIT_DATE);
+        assertThat(testPartnerOrder.getLastUpdateTimestamp()).isEqualTo(UPDATED_LAST_UPDATE_TIMESTAMP);
+        assertThat(testPartnerOrder.getLastUpdateId()).isEqualTo(UPDATED_LAST_UPDATE_ID);
         assertThat(testPartnerOrder.getSalesOrderId()).isEqualTo(UPDATED_SALES_ORDER_ID);
-        assertThat(testPartnerOrder.getOrderDate()).isEqualTo(UPDATED_ORDER_DATE);
-        assertThat(testPartnerOrder.getServiceNumber()).isEqualTo(UPDATED_SERVICE_NUMBER);
     }
 
     @Test

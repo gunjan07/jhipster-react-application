@@ -27,17 +27,23 @@ export class ProductDetail extends React.Component<IProductDetailProps> {
           </h2>
           <dl className="jh-entity-details">
             <dt>
+              <span id="productCode">
+                <Translate contentKey="jhipsterReactApp.product.productCode">Product Code</Translate>
+              </span>
+            </dt>
+            <dd>{productEntity.productCode}</dd>
+            <dt>
               <span id="productName">
                 <Translate contentKey="jhipsterReactApp.product.productName">Product Name</Translate>
               </span>
             </dt>
             <dd>{productEntity.productName}</dd>
             <dt>
-              <span id="productCode">
-                <Translate contentKey="jhipsterReactApp.product.productCode">Product Code</Translate>
+              <span id="productRefId">
+                <Translate contentKey="jhipsterReactApp.product.productRefId">Product Ref Id</Translate>
               </span>
             </dt>
-            <dd>{productEntity.productCode}</dd>
+            <dd>{productEntity.productRefId}</dd>
           </dl>
           <Button tag={Link} to="/product" replace color="info">
             <FontAwesomeIcon icon="arrow-left" />{' '}

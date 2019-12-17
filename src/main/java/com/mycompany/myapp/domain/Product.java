@@ -20,11 +20,14 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "product_code")
+    private String productCode;
+
     @Column(name = "product_name")
     private String productName;
 
-    @Column(name = "product_code")
-    private Integer productCode;
+    @Column(name = "product_ref_id")
+    private String productRefId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -33,6 +36,19 @@ public class Product implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public Product productCode(String productCode) {
+        this.productCode = productCode;
+        return this;
+    }
+
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
     }
 
     public String getProductName() {
@@ -48,17 +64,17 @@ public class Product implements Serializable {
         this.productName = productName;
     }
 
-    public Integer getProductCode() {
-        return productCode;
+    public String getProductRefId() {
+        return productRefId;
     }
 
-    public Product productCode(Integer productCode) {
-        this.productCode = productCode;
+    public Product productRefId(String productRefId) {
+        this.productRefId = productRefId;
         return this;
     }
 
-    public void setProductCode(Integer productCode) {
-        this.productCode = productCode;
+    public void setProductRefId(String productRefId) {
+        this.productRefId = productRefId;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -82,8 +98,9 @@ public class Product implements Serializable {
     public String toString() {
         return "Product{" +
             "id=" + getId() +
+            ", productCode='" + getProductCode() + "'" +
             ", productName='" + getProductName() + "'" +
-            ", productCode=" + getProductCode() +
+            ", productRefId='" + getProductRefId() + "'" +
             "}";
     }
 }

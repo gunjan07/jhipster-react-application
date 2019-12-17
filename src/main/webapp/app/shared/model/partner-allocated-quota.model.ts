@@ -5,6 +5,8 @@ export interface IPartnerAllocatedQuota {
   quantity?: number;
   startDate?: Moment;
   expiryDate?: Moment;
+  lastUpdateTimestamp?: Moment;
+  lastUpdateId?: string;
   status?: string;
   productDetailsId?: number;
   partnerOrderId?: number;

@@ -50,6 +50,20 @@ export class PartnerAllocatedQuotaDetail extends React.Component<IPartnerAllocat
               <TextFormat value={partnerAllocatedQuotaEntity.expiryDate} type="date" format={APP_LOCAL_DATE_FORMAT} />
             </dd>
             <dt>
+              <span id="lastUpdateTimestamp">
+                <Translate contentKey="jhipsterReactApp.partnerAllocatedQuota.lastUpdateTimestamp">Last Update Timestamp</Translate>
+              </span>
+            </dt>
+            <dd>
+              <TextFormat value={partnerAllocatedQuotaEntity.lastUpdateTimestamp} type="date" format={APP_LOCAL_DATE_FORMAT} />
+            </dd>
+            <dt>
+              <span id="lastUpdateId">
+                <Translate contentKey="jhipsterReactApp.partnerAllocatedQuota.lastUpdateId">Last Update Id</Translate>
+              </span>
+            </dt>
+            <dd>{partnerAllocatedQuotaEntity.lastUpdateId}</dd>
+            <dt>
               <span id="status">
                 <Translate contentKey="jhipsterReactApp.partnerAllocatedQuota.status">Status</Translate>
               </span>
